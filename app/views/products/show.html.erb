@@ -1,0 +1,13 @@
+<div class="container-fluid ">
+	<%= raw @product.title %>
+	<%= image_tag @product.image_url, width: '30%' %>
+	<br>
+	<br>
+	<div>
+		<h4><b>Price:</b><%= @product.price%></h4>
+	</div>
+	<div>
+			<h4><b>Description:</b></h4>
+			<%= raw @product.description %>
+	</div>
+</div>
