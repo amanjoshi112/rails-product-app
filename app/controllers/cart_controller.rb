@@ -13,6 +13,9 @@ class CartController < ApplicationController
     redirect_to "/cart"
   end
 
+  def show
+  end
+
   def remove
     item = @cart.line_items.find(params[:id])
     item.destroy
@@ -23,10 +26,10 @@ class CartController < ApplicationController
 
   def checkout
     @cart.checkout!
-    UserMailer.checkout_email(current_user).deliver_later
+    UserMailer.checkout_email(current_user,@cart).deliver_later
     session.delete(:cart_id)
     flash[:notice] = "Thank you for your purchase! We will ship it shortly!"
-    #redirect_to "/"
+    redirect_to "/"
   end
 
   protected

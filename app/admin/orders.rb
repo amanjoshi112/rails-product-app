@@ -24,6 +24,8 @@ ActiveAdmin.register Order do
   scope :in_progress
   scope :complete
 
+  config.batch_actions = true
+
   index do
     column("Order", :sortable => :id) {|order| link_to "##{order.id} ", admin_order_path(order) }
     column("Status")                   {|order| status_tag(order.state) }
