@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EComm</title>
+    <title>E-COMM</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,10 +27,30 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<%= products_path %>">Home</a>
             </li>
+            <% if logged_in? %>    
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/users/<%= current_user.id %>/orders">Order History</a>
+            </li>
+            <% end %>
           </ul>
         </div>
+        <p class="navbar-text float-right">
+        <% if logged_in? %>
+          Welcome <%= current_user.email %>! Not you?
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Sign up", signup_path %> or
+          <%= link_to "Log in", login_path %>.
+        <% end %>
+        </p>
       </div>
-    </nav>
+    </nav>  
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
     <div class="container"><%= yield %></div>
   </body>
 </html>

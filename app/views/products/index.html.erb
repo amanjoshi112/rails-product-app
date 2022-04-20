@@ -8,20 +8,20 @@
 		<th scope="col" >Action</th>
 	</tr>
 	<% @products.each do |product| %>
-	<% if product.status == "active" %>
-	<tr>
-		<td><%= raw product.title %></td>
-		<td><%= raw product.description %></td>
-		<td><%= image_tag(product.image_url(:thumb)) %></td>
-		<td><%= link_to 'Show', product %></td>
-	</tr>
-	<% else %>
-	<tr>
-		<td><%= raw product.title %></td>
-		<td><%= raw product.description %></td>
-		<td><%= image_tag(product.image_url(:thumb)) %></td>
-		<td>No more available</td>
-	</tr>
-	<% end %>
+		<% if product.status == "active" %>
+		<tr>
+			<td><%= raw product.title %></td>
+			<td><%= raw product.description %></td>
+			<td><%= image_tag(product.image_url(:thumb)) %></td>
+			<td><%= link_to 'Show', product %></td>
+		</tr>
+		<% else %>
+		<tr>
+			<td><%= raw product.title %></td>
+			<td><%= raw product.description %></td>
+			<td><%= image_tag(product.image_url(:thumb)) %></td>
+			<td>No more available</td>
+		</tr>
+		<% end %>
 	<% end %>
 </table>

@@ -1,0 +1,18 @@
+<h1 class="text-center"> Order History</h1>
+
+<table class="table table-striped">
+	<tr>
+		<th scope="col" >Id</th>
+		<th scope="col" >Date</th>
+		<th scope="col" >Total Cost</th>
+	</tr>
+	<% @orders.each do |order| %>
+		<% if order.state == "complete" %>
+		<tr>
+			<td><%= order.id %></td>
+			<td><%= order.checked_out_at %></td>
+			<td><%= order.total_price %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
